@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.src).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+	
+		<title>Selecionados! &#8211; eduardoducati.com.br</title><link rel='preload' href='https://eduardoducati.com.br/wp-content/cache/perfmatters/eduardoducati.com.br/css/page-9.used.css?ver=1727619099' as='style' onload="this.rel='stylesheet';this.removeAttribute('onload');"><link rel="stylesheet" id="perfmatters-used-css" href="https://eduardoducati.com.br/wp-content/cache/perfmatters/eduardoducati.com.br/css/page-9.used.css?ver=1727619099" media="all" />
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//maps.googleapis.com' />
+<link rel='dns-prefetch' href='//maps.gstatic.com' />
+
+
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//apis.google.com' />
+<link rel='dns-prefetch' href='//google-analytics.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//ssl.google-analytics.com' />
+<link rel='dns-prefetch' href='//youtube.com' />
+<link rel='dns-prefetch' href='//api.pinterest.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//connect.facebook.net' />
+<link rel='dns-prefetch' href='//platform.twitter.com' />
+<link rel='dns-prefetch' href='//syndication.twitter.com' />
+<link rel='dns-prefetch' href='//platform.instagram.com' />
+<link rel='dns-prefetch' href='//disqus.com' />
+<link rel='dns-prefetch' href='//sitename.disqus.com' />
+<link rel='dns-prefetch' href='//s7.addthis.com' />
+<link rel='dns-prefetch' href='//platform.linkedin.com' />
+<link rel='dns-prefetch' href='//w.sharethis.com' />
+<link rel='dns-prefetch' href='//i0.wp.com' />
+<link rel='dns-prefetch' href='//i1.wp.com' />
+<link rel='dns-prefetch' href='//i2.wp.com' />
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel='dns-prefetch' href='//pixel.wp.com' />
+<link rel='dns-prefetch' href='//s.gravatar.com' />
+<link rel="alternate" type="application/rss+xml" title="Feed para eduardoducati.com.br &raquo;" href="https://eduardoducati.com.br/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para eduardoducati.com.br &raquo;" href="https://eduardoducati.com.br/comments/feed/" />
+<link id='omgf-preload-0' rel='preload' href='//eduardoducati.com.br/wp-content/uploads/omgf/google-fonts-1-mod-wqzd3/roboto-normal-latin-ext-500.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-1' rel='preload' href='//eduardoducati.com.br/wp-content/uploads/omgf/google-fonts-1-mod-wqzd3/roboto-normal-latin-500.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-2' rel='preload' href='//eduardoducati.com.br/wp-content/uploads/omgf/google-fonts-1-mod-wqzd3/roboto-normal-latin-ext-700.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-3' rel='preload' href='//eduardoducati.com.br/wp-content/uploads/omgf/google-fonts-1-mod-wqzd3/roboto-normal-latin-700.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-4' rel='preload' href='//eduardoducati.com.br/wp-content/uploads/omgf/google-fonts-1-mod-wqzd3/roboto-normal-latin-ext-900.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-5' rel='preload' href='//eduardoducati.com.br/wp-content/uploads/omgf/google-fonts-1-mod-wqzd3/roboto-normal-latin-900.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-6' rel='preload' href='//eduardoducati.com.br/wp-content/uploads/omgf/google-fonts-1-mod-wqzd3/roboto-slab-normal-latin-ext-800.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-7' rel='preload' href='//eduardoducati.com.br/wp-content/uploads/omgf/google-fonts-1-mod-wqzd3/roboto-slab-normal-latin-800.woff2' as='font' type='font/woff2' crossorigin />
+<script type="rocketlazyloadscript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/eduardoducati.com.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.6.2"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link data-minify="1" rel='stylesheet' id='contact-form-7-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=1736471448" media='all' />
+<link rel='stylesheet' id='wpcf7-redirect-script-frontend-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/plugins/wpcf7-redirect/build/css/wpcf7-redirect-frontend.min.css?ver=1.1" media='all' />
+<link rel='stylesheet' id='hello-elementor-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/themes/hello-elementor/style.min.css?ver=3.1.1" media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/themes/hello-elementor/theme.min.css?ver=3.1.1" media='all' />
+<link rel='stylesheet' id='hello-elementor-header-footer-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/themes/hello-elementor/header-footer.min.css?ver=3.1.1" media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.24.3" media='all' />
+<style id='elementor-frontend-inline-css'>
+@-webkit-keyframes ha_fadeIn{0%{opacity:0}to{opacity:1}}@keyframes ha_fadeIn{0%{opacity:0}to{opacity:1}}@-webkit-keyframes ha_zoomIn{0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes ha_zoomIn{0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}50%{opacity:1}}@-webkit-keyframes ha_rollIn{0%{opacity:0;-webkit-transform:translate3d(-100%,0,0) rotate3d(0,0,1,-120deg);transform:translate3d(-100%,0,0) rotate3d(0,0,1,-120deg)}to{opacity:1}}@keyframes ha_rollIn{0%{opacity:0;-webkit-transform:translate3d(-100%,0,0) rotate3d(0,0,1,-120deg);transform:translate3d(-100%,0,0) rotate3d(0,0,1,-120deg)}to{opacity:1}}@-webkit-keyframes ha_bounce{0%,20%,53%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}40%,43%{-webkit-transform:translate3d(0,-30px,0) scaleY(1.1);transform:translate3d(0,-30px,0) scaleY(1.1);-webkit-animation-timing-function:cubic-bezier(.755,.05,.855,.06);animation-timing-function:cubic-bezier(.755,.05,.855,.06)}70%{-webkit-transform:translate3d(0,-15px,0) scaleY(1.05);transform:translate3d(0,-15px,0) scaleY(1.05);-webkit-animation-timing-function:cubic-bezier(.755,.05,.855,.06);animation-timing-function:cubic-bezier(.755,.05,.855,.06)}80%{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1);-webkit-transform:translate3d(0,0,0) scaleY(.95);transform:translate3d(0,0,0) scaleY(.95)}90%{-webkit-transform:translate3d(0,-4px,0) scaleY(1.02);transform:translate3d(0,-4px,0) scaleY(1.02)}}@keyframes ha_bounce{0%,20%,53%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}40%,43%{-webkit-transform:translate3d(0,-30px,0) scaleY(1.1);transform:translate3d(0,-30px,0) scaleY(1.1);-webkit-animation-timing-function:cubic-bezier(.755,.05,.855,.06);animation-timing-function:cubic-bezier(.755,.05,.855,.06)}70%{-webkit-transform:translate3d(0,-15px,0) scaleY(1.05);transform:translate3d(0,-15px,0) scaleY(1.05);-webkit-animation-timing-function:cubic-bezier(.755,.05,.855,.06);animation-timing-function:cubic-bezier(.755,.05,.855,.06)}80%{-webkit-transition-timing-function:cubic-bezier(.215,.61,.355,1);transition-timing-function:cubic-bezier(.215,.61,.355,1);-webkit-transform:translate3d(0,0,0) scaleY(.95);transform:translate3d(0,0,0) scaleY(.95)}90%{-webkit-transform:translate3d(0,-4px,0) scaleY(1.02);transform:translate3d(0,-4px,0) scaleY(1.02)}}@-webkit-keyframes ha_bounceIn{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}20%{-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}40%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}60%{opacity:1;-webkit-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03)}80%{-webkit-transform:scale3d(.97,.97,.97);transform:scale3d(.97,.97,.97)}to{opacity:1}}@keyframes ha_bounceIn{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}20%{-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1)}40%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}60%{opacity:1;-webkit-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03)}80%{-webkit-transform:scale3d(.97,.97,.97);transform:scale3d(.97,.97,.97)}to{opacity:1}}@-webkit-keyframes ha_flipInX{0%{opacity:0;-webkit-transform:perspective(400px) rotate3d(1,0,0,90deg);transform:perspective(400px) rotate3d(1,0,0,90deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}40%{-webkit-transform:perspective(400px) rotate3d(1,0,0,-20deg);transform:perspective(400px) rotate3d(1,0,0,-20deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}60%{opacity:1;-webkit-transform:perspective(400px) rotate3d(1,0,0,10deg);transform:perspective(400px) rotate3d(1,0,0,10deg)}80%{-webkit-transform:perspective(400px) rotate3d(1,0,0,-5deg);transform:perspective(400px) rotate3d(1,0,0,-5deg)}}@keyframes ha_flipInX{0%{opacity:0;-webkit-transform:perspective(400px) rotate3d(1,0,0,90deg);transform:perspective(400px) rotate3d(1,0,0,90deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}40%{-webkit-transform:perspective(400px) rotate3d(1,0,0,-20deg);transform:perspective(400px) rotate3d(1,0,0,-20deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}60%{opacity:1;-webkit-transform:perspective(400px) rotate3d(1,0,0,10deg);transform:perspective(400px) rotate3d(1,0,0,10deg)}80%{-webkit-transform:perspective(400px) rotate3d(1,0,0,-5deg);transform:perspective(400px) rotate3d(1,0,0,-5deg)}}@-webkit-keyframes ha_flipInY{0%{opacity:0;-webkit-transform:perspective(400px) rotate3d(0,1,0,90deg);transform:perspective(400px) rotate3d(0,1,0,90deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}40%{-webkit-transform:perspective(400px) rotate3d(0,1,0,-20deg);transform:perspective(400px) rotate3d(0,1,0,-20deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}60%{opacity:1;-webkit-transform:perspective(400px) rotate3d(0,1,0,10deg);transform:perspective(400px) rotate3d(0,1,0,10deg)}80%{-webkit-transform:perspective(400px) rotate3d(0,1,0,-5deg);transform:perspective(400px) rotate3d(0,1,0,-5deg)}}@keyframes ha_flipInY{0%{opacity:0;-webkit-transform:perspective(400px) rotate3d(0,1,0,90deg);transform:perspective(400px) rotate3d(0,1,0,90deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}40%{-webkit-transform:perspective(400px) rotate3d(0,1,0,-20deg);transform:perspective(400px) rotate3d(0,1,0,-20deg);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}60%{opacity:1;-webkit-transform:perspective(400px) rotate3d(0,1,0,10deg);transform:perspective(400px) rotate3d(0,1,0,10deg)}80%{-webkit-transform:perspective(400px) rotate3d(0,1,0,-5deg);transform:perspective(400px) rotate3d(0,1,0,-5deg)}}@-webkit-keyframes ha_swing{20%{-webkit-transform:rotate3d(0,0,1,15deg);transform:rotate3d(0,0,1,15deg)}40%{-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}60%{-webkit-transform:rotate3d(0,0,1,5deg);transform:rotate3d(0,0,1,5deg)}80%{-webkit-transform:rotate3d(0,0,1,-5deg);transform:rotate3d(0,0,1,-5deg)}}@keyframes ha_swing{20%{-webkit-transform:rotate3d(0,0,1,15deg);transform:rotate3d(0,0,1,15deg)}40%{-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}60%{-webkit-transform:rotate3d(0,0,1,5deg);transform:rotate3d(0,0,1,5deg)}80%{-webkit-transform:rotate3d(0,0,1,-5deg);transform:rotate3d(0,0,1,-5deg)}}@-webkit-keyframes ha_slideInDown{0%{visibility:visible;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}}@keyframes ha_slideInDown{0%{visibility:visible;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}}@-webkit-keyframes ha_slideInUp{0%{visibility:visible;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}@keyframes ha_slideInUp{0%{visibility:visible;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}@-webkit-keyframes ha_slideInLeft{0%{visibility:visible;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}}@keyframes ha_slideInLeft{0%{visibility:visible;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}}@-webkit-keyframes ha_slideInRight{0%{visibility:visible;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}}@keyframes ha_slideInRight{0%{visibility:visible;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}}.ha_fadeIn{-webkit-animation-name:ha_fadeIn;animation-name:ha_fadeIn}.ha_zoomIn{-webkit-animation-name:ha_zoomIn;animation-name:ha_zoomIn}.ha_rollIn{-webkit-animation-name:ha_rollIn;animation-name:ha_rollIn}.ha_bounce{-webkit-transform-origin:center bottom;-ms-transform-origin:center bottom;transform-origin:center bottom;-webkit-animation-name:ha_bounce;animation-name:ha_bounce}.ha_bounceIn{-webkit-animation-name:ha_bounceIn;animation-name:ha_bounceIn;-webkit-animation-duration:.75s;-webkit-animation-duration:calc(var(--animate-duration)*.75);animation-duration:.75s;animation-duration:calc(var(--animate-duration)*.75)}.ha_flipInX,.ha_flipInY{-webkit-animation-name:ha_flipInX;animation-name:ha_flipInX;-webkit-backface-visibility:visible!important;backface-visibility:visible!important}.ha_flipInY{-webkit-animation-name:ha_flipInY;animation-name:ha_flipInY}.ha_swing{-webkit-transform-origin:top center;-ms-transform-origin:top center;transform-origin:top center;-webkit-animation-name:ha_swing;animation-name:ha_swing}.ha_slideInDown{-webkit-animation-name:ha_slideInDown;animation-name:ha_slideInDown}.ha_slideInUp{-webkit-animation-name:ha_slideInUp;animation-name:ha_slideInUp}.ha_slideInLeft{-webkit-animation-name:ha_slideInLeft;animation-name:ha_slideInLeft}.ha_slideInRight{-webkit-animation-name:ha_slideInRight;animation-name:ha_slideInRight}.ha-css-transform-yes{-webkit-transition-duration:var(--ha-tfx-transition-duration, .2s);transition-duration:var(--ha-tfx-transition-duration, .2s);-webkit-transition-property:-webkit-transform;transition-property:transform;transition-property:transform,-webkit-transform;-webkit-transform:translate(var(--ha-tfx-translate-x, 0),var(--ha-tfx-translate-y, 0)) scale(var(--ha-tfx-scale-x, 1),var(--ha-tfx-scale-y, 1)) skew(var(--ha-tfx-skew-x, 0),var(--ha-tfx-skew-y, 0)) rotateX(var(--ha-tfx-rotate-x, 0)) rotateY(var(--ha-tfx-rotate-y, 0)) rotateZ(var(--ha-tfx-rotate-z, 0));transform:translate(var(--ha-tfx-translate-x, 0),var(--ha-tfx-translate-y, 0)) scale(var(--ha-tfx-scale-x, 1),var(--ha-tfx-scale-y, 1)) skew(var(--ha-tfx-skew-x, 0),var(--ha-tfx-skew-y, 0)) rotateX(var(--ha-tfx-rotate-x, 0)) rotateY(var(--ha-tfx-rotate-y, 0)) rotateZ(var(--ha-tfx-rotate-z, 0))}.ha-css-transform-yes:hover{-webkit-transform:translate(var(--ha-tfx-translate-x-hover, var(--ha-tfx-translate-x, 0)),var(--ha-tfx-translate-y-hover, var(--ha-tfx-translate-y, 0))) scale(var(--ha-tfx-scale-x-hover, var(--ha-tfx-scale-x, 1)),var(--ha-tfx-scale-y-hover, var(--ha-tfx-scale-y, 1))) skew(var(--ha-tfx-skew-x-hover, var(--ha-tfx-skew-x, 0)),var(--ha-tfx-skew-y-hover, var(--ha-tfx-skew-y, 0))) rotateX(var(--ha-tfx-rotate-x-hover, var(--ha-tfx-rotate-x, 0))) rotateY(var(--ha-tfx-rotate-y-hover, var(--ha-tfx-rotate-y, 0))) rotateZ(var(--ha-tfx-rotate-z-hover, var(--ha-tfx-rotate-z, 0)));transform:translate(var(--ha-tfx-translate-x-hover, var(--ha-tfx-translate-x, 0)),var(--ha-tfx-translate-y-hover, var(--ha-tfx-translate-y, 0))) scale(var(--ha-tfx-scale-x-hover, var(--ha-tfx-scale-x, 1)),var(--ha-tfx-scale-y-hover, var(--ha-tfx-scale-y, 1))) skew(var(--ha-tfx-skew-x-hover, var(--ha-tfx-skew-x, 0)),var(--ha-tfx-skew-y-hover, var(--ha-tfx-skew-y, 0))) rotateX(var(--ha-tfx-rotate-x-hover, var(--ha-tfx-rotate-x, 0))) rotateY(var(--ha-tfx-rotate-y-hover, var(--ha-tfx-rotate-y, 0))) rotateZ(var(--ha-tfx-rotate-z-hover, var(--ha-tfx-rotate-z, 0)))}.happy-addon>.elementor-widget-container{word-wrap:break-word;overflow-wrap:break-word}.happy-addon>.elementor-widget-container,.happy-addon>.elementor-widget-container *{-webkit-box-sizing:border-box;box-sizing:border-box}.happy-addon p:empty{display:none}.happy-addon .elementor-inline-editing{min-height:auto!important}.happy-addon-pro img{max-width:100%;height:auto;-o-object-fit:cover;object-fit:cover}.ha-screen-reader-text{position:absolute;overflow:hidden;clip:rect(1px,1px,1px,1px);margin:-1px;padding:0;width:1px;height:1px;border:0;word-wrap:normal!important;-webkit-clip-path:inset(50%);clip-path:inset(50%)}.ha-has-bg-overlay>.elementor-widget-container{position:relative;z-index:1}.ha-has-bg-overlay>.elementor-widget-container:before{position:absolute;top:0;left:0;z-index:-1;width:100%;height:100%;content:""}.ha-popup--is-enabled .ha-js-popup,.ha-popup--is-enabled .ha-js-popup img{cursor:-webkit-zoom-in!important;cursor:zoom-in!important}.mfp-wrap .mfp-arrow,.mfp-wrap .mfp-close{background-color:transparent}.mfp-wrap .mfp-arrow:focus,.mfp-wrap .mfp-close:focus{outline-width:thin}.ha-advanced-tooltip-enable{position:relative;cursor:pointer;--ha-tooltip-arrow-color:black;--ha-tooltip-arrow-distance:0}.ha-advanced-tooltip-enable .ha-advanced-tooltip-content{position:absolute;z-index:999;display:none;padding:5px 0;width:120px;height:auto;border-radius:6px;background-color:#000;color:#fff;text-align:center;opacity:0}.ha-advanced-tooltip-enable .ha-advanced-tooltip-content::after{position:absolute;border-width:5px;border-style:solid;content:""}.ha-advanced-tooltip-enable .ha-advanced-tooltip-content.no-arrow::after{visibility:hidden}.ha-advanced-tooltip-enable .ha-advanced-tooltip-content.show{display:inline-block;opacity:1}.ha-advanced-tooltip-enable.ha-advanced-tooltip-top .ha-advanced-tooltip-content,body[data-elementor-device-mode=tablet] .ha-advanced-tooltip-enable.ha-advanced-tooltip-tablet-top .ha-advanced-tooltip-content{top:unset;right:0;bottom:calc(101% + var(--ha-tooltip-arrow-distance));left:0;margin:0 auto}.ha-advanced-tooltip-enable.ha-advanced-tooltip-top .ha-advanced-tooltip-content::after,body[data-elementor-device-mode=tablet] .ha-advanced-tooltip-enable.ha-advanced-tooltip-tablet-top .ha-advanced-tooltip-content::after{top:100%;right:unset;bottom:unset;left:50%;border-color:var(--ha-tooltip-arrow-color) transparent transparent transparent;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%)}.ha-advanced-tooltip-enable.ha-advanced-tooltip-bottom .ha-advanced-tooltip-content,body[data-elementor-device-mode=tablet] .ha-advanced-tooltip-enable.ha-advanced-tooltip-tablet-bottom .ha-advanced-tooltip-content{top:calc(101% + var(--ha-tooltip-arrow-distance));right:0;bottom:unset;left:0;margin:0 auto}.ha-advanced-tooltip-enable.ha-advanced-tooltip-bottom .ha-advanced-tooltip-content::after,body[data-elementor-device-mode=tablet] .ha-advanced-tooltip-enable.ha-advanced-tooltip-tablet-bottom .ha-advanced-tooltip-content::after{top:unset;right:unset;bottom:100%;left:50%;border-color:transparent transparent var(--ha-tooltip-arrow-color) transparent;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%)}.ha-advanced-tooltip-enable.ha-advanced-tooltip-left .ha-advanced-tooltip-content,body[data-elementor-device-mode=tablet] .ha-advanced-tooltip-enable.ha-advanced-tooltip-tablet-left .ha-advanced-tooltip-content{top:50%;right:calc(101% + var(--ha-tooltip-arrow-distance));bottom:unset;left:unset;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}.ha-advanced-tooltip-enable.ha-advanced-tooltip-left .ha-advanced-tooltip-content::after,body[data-elementor-device-mode=tablet] .ha-advanced-tooltip-enable.ha-advanced-tooltip-tablet-left .ha-advanced-tooltip-content::after{top:50%;right:unset;bottom:unset;left:100%;border-color:transparent transparent transparent var(--ha-tooltip-arrow-color);-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}.ha-advanced-tooltip-enable.ha-advanced-tooltip-right .ha-advanced-tooltip-content,body[data-elementor-device-mode=tablet] .ha-advanced-tooltip-enable.ha-advanced-tooltip-tablet-right .ha-advanced-tooltip-content{top:50%;right:unset;bottom:unset;left:calc(101% + var(--ha-tooltip-arrow-distance));-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}.ha-advanced-tooltip-enable.ha-advanced-tooltip-right .ha-advanced-tooltip-content::after,body[data-elementor-device-mode=tablet] .ha-advanced-tooltip-enable.ha-advanced-tooltip-tablet-right .ha-advanced-tooltip-content::after{top:50%;right:100%;bottom:unset;left:unset;border-color:transparent var(--ha-tooltip-arrow-color) transparent transparent;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}body[data-elementor-device-mode=mobile] .ha-advanced-tooltip-enable.ha-advanced-tooltip-mobile-top .ha-advanced-tooltip-content{top:unset;right:0;bottom:calc(101% + var(--ha-tooltip-arrow-distance));left:0;margin:0 auto}body[data-elementor-device-mode=mobile] .ha-advanced-tooltip-enable.ha-advanced-tooltip-mobile-top .ha-advanced-tooltip-content::after{top:100%;right:unset;bottom:unset;left:50%;border-color:var(--ha-tooltip-arrow-color) transparent transparent transparent;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%)}body[data-elementor-device-mode=mobile] .ha-advanced-tooltip-enable.ha-advanced-tooltip-mobile-bottom .ha-advanced-tooltip-content{top:calc(101% + var(--ha-tooltip-arrow-distance));right:0;bottom:unset;left:0;margin:0 auto}body[data-elementor-device-mode=mobile] .ha-advanced-tooltip-enable.ha-advanced-tooltip-mobile-bottom .ha-advanced-tooltip-content::after{top:unset;right:unset;bottom:100%;left:50%;border-color:transparent transparent var(--ha-tooltip-arrow-color) transparent;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%)}body[data-elementor-device-mode=mobile] .ha-advanced-tooltip-enable.ha-advanced-tooltip-mobile-left .ha-advanced-tooltip-content{top:50%;right:calc(101% + var(--ha-tooltip-arrow-distance));bottom:unset;left:unset;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}body[data-elementor-device-mode=mobile] .ha-advanced-tooltip-enable.ha-advanced-tooltip-mobile-left .ha-advanced-tooltip-content::after{top:50%;right:unset;bottom:unset;left:100%;border-color:transparent transparent transparent var(--ha-tooltip-arrow-color);-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}body[data-elementor-device-mode=mobile] .ha-advanced-tooltip-enable.ha-advanced-tooltip-mobile-right .ha-advanced-tooltip-content{top:50%;right:unset;bottom:unset;left:calc(101% + var(--ha-tooltip-arrow-distance));-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}body[data-elementor-device-mode=mobile] .ha-advanced-tooltip-enable.ha-advanced-tooltip-mobile-right .ha-advanced-tooltip-content::after{top:50%;right:100%;bottom:unset;left:unset;border-color:transparent var(--ha-tooltip-arrow-color) transparent transparent;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}body.elementor-editor-active .happy-addon.ha-gravityforms .gform_wrapper{display:block!important}.ha-scroll-to-top-wrap.ha-scroll-to-top-hide{display:none}.ha-scroll-to-top-wrap.edit-mode,.ha-scroll-to-top-wrap.single-page-off{display:none!important}.ha-scroll-to-top-button{position:fixed;right:15px;bottom:15px;z-index:9999;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-ms-flex-align:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;width:50px;height:50px;border-radius:50px;background-color:#5636d1;color:#fff;text-align:center;opacity:1;cursor:pointer;-webkit-transition:all .3s;transition:all .3s}.ha-scroll-to-top-button i{color:#fff;font-size:16px}.ha-scroll-to-top-button:hover{background-color:#e2498a}
+</style>
+<link rel='stylesheet' id='elementor-post-8-css' href='https://eduardoducati.com.br/wp-content/uploads/elementor/css/post-8.css?ver=1736471415' media='all' />
+<link data-minify="1" rel='stylesheet' id='swiper-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=1736471448" media='all' />
+<link rel='stylesheet' id='e-swiper-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/css/conditionals/e-swiper.min.css?ver=3.24.3" media='all' />
+<link rel='stylesheet' id='elementor-pro-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/plugins/pro-elements/assets/css/frontend.min.css?ver=3.24.4" media='all' />
+<link data-minify="1" rel='stylesheet' id='font-awesome-5-all-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=1736471448" media='all' />
+<link rel='stylesheet' id='font-awesome-4-shim-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css?ver=3.24.3" media='all' />
+<link rel='stylesheet' id='elementor-global-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/uploads/elementor/css/global.css?ver=1736471415" media='all' />
+<link rel='stylesheet' id='widget-heading-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=3.24.3" media='all' />
+<link rel='stylesheet' id='widget-image-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=3.24.3" media='all' />
+<link rel='stylesheet' id='widget-icon-list-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css?ver=3.24.3" media='all' />
+<link rel='stylesheet' id='widget-text-editor-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/css/widget-text-editor.min.css?ver=3.24.3" media='all' />
+<link rel='stylesheet' id='elementor-post-9-css' href='https://eduardoducati.com.br/wp-content/uploads/elementor/css/post-9.css?ver=1736471415' media='all' />
+<link data-minify="1" rel='stylesheet' id='happy-icons-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/plugins/happy-elementor-addons/assets/fonts/style.min.css?ver=1736471448" media='all' />
+<link data-minify="1" rel='stylesheet' id='font-awesome-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=1736471448" media='all' />
+<style id='rocket-lazyload-inline-css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://eduardoducati.com.br/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+</style>
+<link data-minify="1" rel='stylesheet' id='google-fonts-1-css' data-pmdelayedstyle="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/uploads/omgf/google-fonts-1-mod-wqzd3/google-fonts-1-mod-wqzd3.css?ver=1736471448" media='all' />
+<script type="rocketlazyloadscript" src="https://eduardoducati.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script id="tt4b_ajax_script-js-extra">
+var tt4b_script_vars = {"pixel_code":"CTVFSAJC77UAU38JL4FG","currency":"","country":"BR","advanced_matching":"1"};
+</script>
+<script type="rocketlazyloadscript" data-minify="1" defer='defer' src="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/plugins/tiktok-for-business/admin/js/ajaxSnippet.js?ver=1730213346" id="tt4b_ajax_script-js"></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=3.24.3" id="font-awesome-4-shim-js"></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/happy-elementor-addons/assets/vendor/dom-purify/purify.min.js?ver=3.1.6" id="dom-purify-js"></script>
+<link rel="https://api.w.org/" href="https://eduardoducati.com.br/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://eduardoducati.com.br/wp-json/wp/v2/pages/9" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://eduardoducati.com.br/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.6.2" />
+<link rel="canonical" href="https://eduardoducati.com.br/selecionados/" />
+<link rel='shortlink' href='https://eduardoducati.com.br/?p=9' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://eduardoducati.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Feduardoducati.com.br%2Fselecionados%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://eduardoducati.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Feduardoducati.com.br%2Fselecionados%2F&#038;format=xml" />
+<!-- Google Tag Manager -->
+<script type="rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TX8JHFXV');</script>
+<!-- End Google Tag Manager -->
+
+<script type="rocketlazyloadscript">
+!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.install=t():e.install=t()}(window,(function(){return function(e){var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}return n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)n.d(o,r,function(t){return e[t]}.bind(null,r));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";var o=this&&this.__spreadArray||function(e,t,n){if(n||2===arguments.length)for(var o,r=0,i=t.length;r<i;r++)!o&&r in t||(o||(o=Array.prototype.slice.call(t,0,r)),o[r]=t[r]);return e.concat(o||Array.prototype.slice.call(t))};Object.defineProperty(t,"__esModule",{value:!0});var r=function(e,t,n){var o,i=e.createElement("script");i.type="text/javascript",i.async=!0,i.src=t,n&&(i.onerror=function(){r(e,n)});var a=e.getElementsByTagName("script")[0];null===(o=a.parentNode)||void 0===o||o.insertBefore(i,a)};!function(e,t,n){e.KwaiAnalyticsObject=n;var i=e[n]=e[n]||[];i.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];var a=function(e,t){e[t]=function(){for(var n=[],r=0;r<arguments.length;r++)n[r]=arguments[r];var i=o([t],n,!0);e.push(i)}};i.methods.forEach((function(e){a(i,e)})),i.instance=function(e){var t,n=(null===(t=i._i)||void 0===t?void 0:t[e])||[];return i.methods.forEach((function(e){a(n,e)})),n},i.load=function(e,o){var a="https://s1.kwai.net/kos/s101/nlav11187/pixel/events.js";i._i=i._i||{},i._i[e]=[],i._i[e]._u=a,i._t=i._t||{},i._t[e]=+new Date,i._o=i._o||{},i._o[e]=o||{};var c="?sdkid=".concat(e,"&lib=").concat(n);r(t,a+c,"https://s16-11187.ap4r.com/kos/s101/nlav11187/pixel/events.js"+c)}}(window,document,"kwaiq")}])}));
+</script>
+<script type="rocketlazyloadscript">
+kwaiq.load('262201764670617');
+kwaiq.page();
+</script>
+
+<!-- Meta Pixel Code -->
+<script type="rocketlazyloadscript">
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '956782929616485');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=956782929616485&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<script type="rocketlazyloadscript" data-minify="1"
+  src="https://eduardoducati.com.br/wp-content/cache/min/1/scripts/utms/latest.js?ver=1732804553"
+  data-utmify-prevent-subids
+  data-utmify-ignore-iframe
+  async
+  defer
+></script>
+
+
+
+<meta name="generator" content="Elementor 3.24.3; features: e_font_icon_svg, additional_custom_breakpoints, e_optimized_control_loading, e_element_cache; settings: css_print_method-external, google_font-enabled, font_display-swap">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /></head>
+<body class="page-template page-template-elementor_canvas page page-id-9 elementor-default elementor-template-canvas elementor-kit-8 elementor-page elementor-page-9">
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TX8JHFXV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->		<div data-elementor-type="wp-page" data-elementor-id="9" class="elementor elementor-9" data-elementor-post-type="page">
+				<div class="elementor-element elementor-element-b9bdd13 e-flex e-con-boxed e-con e-parent" data-id="b9bdd13" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;_ha_eqh_enable&quot;:false}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-04929ea elementor-widget elementor-widget-html" data-id="04929ea" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<script type="rocketlazyloadscript">
+    var urlBackRedirect = 'https://eduardoducati.com.br/back/'; // lembre-se de usar a url sem espaços
+    // não altere nada abaixo dessa linha
+    urlBackRedirect = urlBackRedirect = urlBackRedirect.trim() +
+            (urlBackRedirect.indexOf("?") > 0 ? '&' : '?') +
+            document.location.search.replace('?', '').toString();
+    history.pushState({}, "", location.href);
+    history.pushState({}, "", location.href);
+    window.onpopstate = function () {
+        setTimeout(function () {
+            location.href = urlBackRedirect;
+        }, 1);
+    };
+</script>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1eb1d82 elementor-widget elementor-widget-heading" data-id="1eb1d82" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">PARABÉNS!
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-063aef7 elementor-widget elementor-widget-heading" data-id="063aef7" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Você e Mais 56 Homens Foram qualificados: </h2>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-3d5ce2d e-flex e-con-boxed e-con e-parent" data-id="3d5ce2d" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;_ha_eqh_enable&quot;:false}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-cda707f elementor-widget elementor-widget-heading" data-id="cda707f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">943 Homens Foram Desqualificados!</h2>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-4f0bdb3 e-flex e-con-boxed e-con e-parent" data-id="4f0bdb3" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;_ha_eqh_enable&quot;:false}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-4cc09a9 elementor-widget elementor-widget-heading" data-id="4cc09a9" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><p class="MsoNormal">Se você chegou até aqui, <b><i>considere um homem de sorte.</i></b><o:p></o:p></p>
+
+<p class="MsoNormal">Somente <b>57</b> entre 1000 homens terão acesso ao conteúdo
+polêmico que você vai ver aqui.<o:p></o:p></p>
+
+<p class="MsoNormal"><b>O motivo de toda essa exclusividade?</b><o:p></o:p></p>
+
+<p class="MsoNormal"><i>Simples...<o:p></o:p></i></p>
+
+<p class="MsoNormal">Como essa página se torna pública, os homens que usam esse
+<b>"Truque Sujo"</b> vão querer me matar...<o:p></o:p></p>
+
+<p class="MsoNormal">Ou pior, vão querer me processar, pois se trata de um
+conteúdo super polêmico.<o:p></o:p></p>
+
+<p class="MsoNormal">Então aproveite enquanto ainda está acessível.<o:p></o:p></p>
+
+<p class="MsoNormal">Pois esse <b>"Truquezinho Sujo"</b> é o que alguns homens
+usam para conquistar as mulheres mais gatas e gostosas do Brasil.<o:p></o:p></p>
+
+<p class="MsoNormal">Então se for esperto, você vai usar esse mesmo
+"Truquezinho Sujo" na mulher que você quer conquistar, seja na balada, na
+academia, ou até mesmo a sua chefe no trabalho. <o:p></o:p></p>
+
+<p class="MsoNormal">Para ter certeza de que <b>você vai levar ela pra cama.</b><o:p></o:p></p>
+
+<p class="MsoNormal">Mas use isso com cautela, pois esse mesmo <i>truque sujo</i> foi
+usado pelo <b>João Guilherme</b> para conseguir conquistar as mulheres mais gatas do
+país, como a ex do Neymar, Bruna Marquezine, Bruna Griphao, Duda Reis, Larissa
+Manoela, Jade Picon e Gkay.</p></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-9e8bfc8 elementor-widget elementor-widget-image" data-id="9e8bfc8" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f.webp 984w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f-300x169.jpg 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f-768x432.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20450'%3E%3C/svg%3E" height="450" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f.jpg 984w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f-300x169.jpg 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f-768x432.jpg 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-11 sp-no-webp" alt="" fetchpriority="high" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f.jpg" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f.jpg" height="450" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f.jpg 984w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f-300x169.jpg 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.03.11_490dbd1f-768x432.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-11 sp-no-webp" alt="" fetchpriority="high" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-b60dbce elementor-widget elementor-widget-image" data-id="b60dbce" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc.webp 888w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc-300x179.jpg 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc-768x458.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20477'%3E%3C/svg%3E" height="477" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc.jpg 888w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc-300x179.jpg 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc-768x458.jpg 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-12 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc.jpg" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc.jpg" height="477" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc.jpg 888w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc-300x179.jpg 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-22-as-23.04.40_c18307fc-768x458.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-12 sp-no-webp" alt="" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-b22557b elementor-widget elementor-widget-heading" data-id="b22557b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Após sair essa matéria da O Globo, um especialista em relacionamentos, Denzel Moreno, explicou como ele conseguiu conquistar as mulheres mais lindas do Brasil.</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6e222a5 elementor-widget elementor-widget-image" data-id="6e222a5" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2.webp 908w, https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2-300x244.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2-768x623.png 768w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20649'%3E%3C/svg%3E" height="649" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2.png 908w, https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2-300x244.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2-768x623.png 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-14 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2.png" height="649" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2.png 908w, https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2-300x244.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/o-globo2-768x623.png 768w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-14 sp-no-webp" alt="" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-3cc1d6e elementor-widget elementor-widget-heading" data-id="3cc1d6e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><p class="MsoNormal">Esse <b>"Segredinho Sujo"</b> do João Guilherme é
+extremamente <b>forte e poderoso.</b><o:p></o:p></p>
+
+<p class="MsoNormal">Pois ele conseguiu conquistar <b>todas essas mulheres</b>,
+independente de elas serem mais velhas, terem mais dinheiro ou fama que ele.<o:p></o:p></p>
+
+<p class="MsoNormal">Ele conseguiu fazer isso usando um princípio simples.<o:p></o:p></p>
+
+<p class="MsoNormal">Prazer, eu me chamo Denzel Moreno, sou <b>especialista em
+relacionamentos</b> e já ajudei mais de 1.341 homens a conquistar as mulheres mais
+gatas e gostosas que eles queriam.<o:p></o:p></p></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-d5e3355 elementor-widget elementor-widget-image" data-id="d5e3355" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img decoding="async" width="370" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20370%20512'%3E%3C/svg%3E" class="attachment-large size-large wp-image-15627" alt="" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/12/8f3b40bc0237d40540af2ff40ce3ada6.jpg 370w, https://eduardoducati.com.br/wp-content/uploads/2024/12/8f3b40bc0237d40540af2ff40ce3ada6-217x300.jpg 217w" data-lazy-sizes="(max-width: 370px) 100vw, 370px" data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/12/8f3b40bc0237d40540af2ff40ce3ada6.jpg" /><noscript><img loading="lazy" decoding="async" width="370" height="512" src="https://eduardoducati.com.br/wp-content/uploads/2024/12/8f3b40bc0237d40540af2ff40ce3ada6.jpg" class="attachment-large size-large wp-image-15627" alt="" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/12/8f3b40bc0237d40540af2ff40ce3ada6.jpg 370w, https://eduardoducati.com.br/wp-content/uploads/2024/12/8f3b40bc0237d40540af2ff40ce3ada6-217x300.jpg 217w" sizes="(max-width: 370px) 100vw, 370px" /></noscript>													</div>
+				</div>
+				<div class="elementor-element elementor-element-eff8feb elementor-widget elementor-widget-heading" data-id="eff8feb" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><p class="MsoNormal">E recentemente <b>resolvi investigar</b> o famoso caso do <i>João
+Guilherme.</i><o:p></o:p></p>
+
+<p class="MsoNormal">Para entender de fato a <b>psicologia por trás</b> dos truques que
+ele usa para conseguir se relacionar com essas mulheres.<o:p></o:p></p>
+
+<p class="MsoNormal">Como ele conseguiu <b>namorar</b> a Larissa Manoela, Jade Picon e
+recentemente, a EX do Neymar, a Bruna Marquezine?<o:p></o:p></p>
+
+<p class="MsoNormal">Depois de 6 meses estudando os relacionamentos que ele
+teve...<o:p></o:p></p>
+
+<p class="MsoNormal"><b>Eu descobri o segredinho sujo que o João Guilherme usou para
+conseguir fazer elas quererem ficar com ele</b>, independente da fama ou dinheiro
+que ele tem (a maioria delas tem mais dinheiro que ele).<o:p></o:p></p>
+
+<p class="MsoNormal">Ao estudar todo os relacionamentos que ele teve e tudo o que ele
+fazia, eu encontrei os <b>gatilhos pontos</b> que ele ativa nelas. <o:p></o:p></p>
+
+<p class="MsoNormal">Esses gatilhos são ativados através de conversa, <b>toques,
+gestos, sons falas e mensagens especificas</b> que ele fazia!<o:p></o:p></p>
+
+<p class="MsoNormal">Esses conjuntos de ações e palavras, que até podem parecer
+questionáveis, <b>é o verdadeiro segredinho sujo</b> que pode fazer qualquer mulher ficar com <u>vontade de beijar</u> você (ou até mesmo fazer outras coisas)!<o:p></o:p></p>
+
+<p class="MsoNormal"></p></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-0940d09 elementor-widget elementor-widget-heading" data-id="0940d09" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">E eu já vou te mostrar como você vai usar cada um desses "12 gatilhos da sedução" ainda hoje!</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-785e3da elementor-widget elementor-widget-heading" data-id="785e3da" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Depois desses 6 meses, identificamos esses <b>"12 Gatilhos da Sedução" </b>e as estratégias mais poderosas que identifiquei nos meus anos na área.
+<br><br>Para fazer <b>qualquer homem</b> conquistar a <b>mulher que quiser.</b>
+<br><br>E confesso que <b>nunca vi algo tão forte e poderoso</b>, pois isso dá a qualquer homem uma vantagem desleal sobre qualquer outro homem solteiro...
+<br><br>Mesmo que você não tenha um corpo de ator, muito dinheiro ou seja feio...
+<br><br>E a prova disso são meus clientes, que quando começaram a aplicar o passo a passo do <b>"Guia Inabalável da Sedução"</b>, me mandaram <b>relatos como esse...</b></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-d31fea3 elementor-widget elementor-widget-image" data-id="d31fea3" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/1-1024x526.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/1-300x154.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/1-768x395.png 768w,https://eduardoducati.com.br/wp-content/uploads/2024/09/1.webp 1170w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20411'%3E%3C/svg%3E" height="411" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/1-1024x526.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/1-300x154.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/1-768x395.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/1.png 1170w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-59 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/1-1024x526.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/1-1024x526.png" height="411" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/1-1024x526.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/1-300x154.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/1-768x395.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/1.png 1170w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-59 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-90c10c6 elementor-widget elementor-widget-image" data-id="90c10c6" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/2-1024x334.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/2-300x98.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/2-768x251.png 768w,https://eduardoducati.com.br/wp-content/uploads/2024/09/2.webp 1170w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20261'%3E%3C/svg%3E" height="261" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/2-1024x334.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/2-300x98.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/2-768x251.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/2.png 1170w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-60 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/2-1024x334.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/2-1024x334.png" height="261" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/2-1024x334.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/2-300x98.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/2-768x251.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/2.png 1170w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-60 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-d2aca55 elementor-widget elementor-widget-image" data-id="d2aca55" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/3-1024x724.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/3-300x212.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/3-768x543.png 768w,https://eduardoducati.com.br/wp-content/uploads/2024/09/3.webp 1170w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20566'%3E%3C/svg%3E" height="566" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/3-1024x724.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/3-300x212.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/3-768x543.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/3.png 1170w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-61 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/3-1024x724.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/3-1024x724.png" height="566" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/3-1024x724.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/3-300x212.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/3-768x543.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/3.png 1170w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-61 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-85f28bf elementor-widget elementor-widget-image" data-id="85f28bf" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/4-1024x469.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/4-300x137.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/4-768x352.png 768w,https://eduardoducati.com.br/wp-content/uploads/2024/09/4.webp 1170w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20366'%3E%3C/svg%3E" height="366" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/4-1024x469.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/4-300x137.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/4-768x352.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/4.png 1170w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-62 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/4-1024x469.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/4-1024x469.png" height="366" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/4-1024x469.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/4-300x137.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/4-768x352.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/4.png 1170w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-62 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-276215c elementor-widget elementor-widget-image" data-id="276215c" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/5-1024x579.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/5-300x169.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/5-768x434.png 768w,https://eduardoducati.com.br/wp-content/uploads/2024/09/5.webp 1170w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20452'%3E%3C/svg%3E" height="452" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/5-1024x579.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/5-300x169.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/5-768x434.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/5.png 1170w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-63 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/5-1024x579.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/5-1024x579.png" height="452" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/5-1024x579.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/5-300x169.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/5-768x434.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/5.png 1170w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-63 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-3b9b80a elementor-widget elementor-widget-heading" data-id="3b9b80a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Aplique os gatilhos e você conseguirá (acredite se quiser)...</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-11de016 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="11de016" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Conquistar a mulher que sempre sonhou: Domine os gatilhos para conquistar a mulher que você sempre quis.</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Como chegar em qualquer mulher: Independente do lugar onde você conhece ela, aprenda a chegar e beijar ela.</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Manter o Interesse Dela: Seja uma presença irresistível em sua vida, mantendo seu interesse constante.</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Despertar a paixão: Acenda a chama da paixão, fazendo-a se sentir apaixonadamente atraída por você.</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Conquistar a Confiança Dela: Ganhe sua confiança, tornando-se alguém em que ela pode confiar completamente.</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Homem inesquecível: torne-se o homem que ela jamais esquecerá.</span>
+									</li>
+						</ul>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6a5e945 elementor-widget elementor-widget-heading" data-id="6a5e945" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Mas o que é esse Guia Inabalável da Sedução?</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-f0cece5 elementor-widget elementor-widget-image" data-id="f0cece5" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.webp 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20288'%3E%3C/svg%3E" height="288" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-39 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png" height="288" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-39 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-1811cb4 elementor-widget elementor-widget-heading" data-id="1811cb4" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Esse Guia é são aulas gravadas que eu vou te explicar de forma <b>fácil</b>, simples e <u>sem enrolação</u>, cada um dos <b>"12 Gatilhos"</b> que são necessários para fazer você conquistar a mulher que <b>quiser.
+</b><br><br>Eu deixei esse guia tão fácil e simples de aprender e de praticar, que até o final do dia você vai saber exatamente o que precisa fazer para você conquistar a mulher que você <b>ESCOLHER.</b>
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-98cd482 elementor-widget elementor-widget-heading" data-id="98cd482" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Você ganhou o guia praticamente de Graça!</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-077bd5e elementor-widget elementor-widget-heading" data-id="077bd5e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto em Vermelho</title>
+    <style>
+        .vermelho {
+            color: red; /* Define a cor do texto como vermelho */
+        }
+    </style>
+
+
+    <p>Eu vendo ele em minhas mentorias por <span class="vermelho"><b>R$100,00</b></span>...</p>
+
+    <p>Mas a cada 3 meses eu faço um quiz de teste de 4 perguntas,</p>
+    <p>e os homens que se qualificam, eu disponibilizo o guia por um preço mínimo!</p>
+
+    <p>Se você está vendo isso agora, você foi um dos homens que</p>
+    <p>passaram no teste e foram selecionados para esse desconto especial!</p>
+
+
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-40196a6 elementor-widget elementor-widget-heading" data-id="40196a6" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto em Vermelho</title>
+    <style>
+        .vermelho {
+            color: red; /* Define a cor do texto como vermelho */
+        }
+    </style>
+</head>
+<body>
+    <p>Só hoje e nessa página você poderá ter acesso ao <span class="vermelho">Guia inabalável da sedução</span> + um super Bônus extra com 80% de desconto!</p>
+<script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script><script type="text/javascript" id="perfmatters-delayed-styles-js">!function(){const e=["keydown","mousemove","wheel","touchmove","touchstart","touchend"];function t(){document.querySelectorAll("link[data-pmdelayedstyle]").forEach(function(e){e.setAttribute("href",e.getAttribute("data-pmdelayedstyle"))}),e.forEach(function(e){window.removeEventListener(e,t,{passive:!0})})}e.forEach(function(e){window.addEventListener(e,t,{passive:!0})})}();</script></body>
+</html>
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-f1d24d8 elementor-widget elementor-widget-image" data-id="f1d24d8" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.webp 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20288'%3E%3C/svg%3E" height="288" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-39 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png" height="288" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-39 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-4d1e72b elementor-widget elementor-widget-text-editor" data-id="4d1e72b" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>Valor total de <span class="travessao">R$575,00</span></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-e1fc4de elementor-widget elementor-widget-heading" data-id="e1fc4de" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">por apenas: R$29,90
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7b1d9f9 elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="7b1d9f9" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="https://pay.kirvano.com/450e603b-fc38-45da-9abc-d9f00dcf3914">
+						<span class="elementor-button-content-wrapper">
+									<span class="elementor-button-text">QUERO O GUIA COM DESCONTO!</span>
+					</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-bcf440c elementor-widget elementor-widget-heading" data-id="bcf440c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Bônus:</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-5db7967 elementor-widget elementor-widget-image" data-id="5db7967" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-1024x1024.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-300x300.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-150x150.png 150w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-768x768.png 768w,https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup.webp 1080w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%3E%3C/svg%3E" height="800" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-1024x1024.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-300x300.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-150x150.png 150w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-768x768.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup.png 1080w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-40 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-1024x1024.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-1024x1024.png" height="800" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-1024x1024.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-300x300.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-150x150.png 150w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-768x768.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup.png 1080w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-40 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-207efdb elementor-widget elementor-widget-heading" data-id="207efdb" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Você vai levar hoje, além das <b>5 aulas</b> com o especialista em relacionamentos, você também vai levar o Ebook chamado <b>"Guia Inabalável da Sedução"</b>, um guia completo sobre quais os <b style="">12 gatilhos da sedução.</b></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4f3eb6c elementor-widget elementor-widget-image" data-id="4f3eb6c" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img decoding="async" width="800" height="800" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%3E%3C/svg%3E" class="attachment-large size-large wp-image-93" alt="" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-1024x1024.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-300x300.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-150x150.png 150w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-768x769.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-1536x1536.png 1536w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-2048x2048.png 2048w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-1024x1024.png" /><noscript><img loading="lazy" decoding="async" width="800" height="800" src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-1024x1024.png" class="attachment-large size-large wp-image-93" alt="" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-1024x1024.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-300x300.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-150x150.png 150w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-768x769.png 768w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-1536x1536.png 1536w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Selo_de_Garantia_de_7_Dias_PNG_Transparente_Sem_Fundo-2048x2048.png 2048w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>													</div>
+				</div>
+				<div class="elementor-element elementor-element-c6413f1 elementor-widget elementor-widget-heading" data-id="c6413f1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Garantia de 7 dias!</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4c5ffa2 elementor-widget elementor-widget-heading" data-id="4c5ffa2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Sabia que você também conta com uma <b>garantia incondicional de 7 dias!</b>
+<br><br>Eu confio tanto no poder que as orientações que eu passo no guia tem o poder de fazer você, mesmo feio e sem dinheiro conquistar as mulheres mais <b>gatas e gostosas.</b>
+<br><br>Que você pode testá-lo por 1 mês completo sem risco algum!
+Isso significa dizer que se você não conseguir conquistar a mulher que você quiser...
+<br><br>As mais gatas e gostosas...
+Tenho questão de devolver cada centavo do seu investimento...
+Por isso saiba que você está entrando no <b>Guia Inabalável da sedução</b>, você não tem risco nenhum...
+<br><br>Ou você tem sucesso, ou eu não fico com dinheiro nenhum seu!
+Por isso, clique agora mesmo no botão abaixo e garanta agora mesmo a sua vaga no guia...
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-bd6257d elementor-widget elementor-widget-heading" data-id="bd6257d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Por que isso funciona?</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-a280df7 elementor-widget elementor-widget-heading" data-id="a280df7" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><p class="MsoNormal">As mulheres sempre perdem o interesse nos homens
+rapidamente...<o:p></o:p></p>
+
+<p class="MsoNormal">E isso acontece porque, de acordo com as pesquisas da
+<b>Universidade de Michigan</b>, no começo do flerte, essa parte do cérebro das mulheres, chamada sistema límbico...<o:p></o:p></p></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-52b77cf elementor-widget elementor-widget-image" data-id="52b77cf" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92.webp 700w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92-300x300.jpg 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92-150x150.jpg 150w" sizes="(max-width: 700px) 100vw, 700px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20700%20700'%3E%3C/svg%3E" height="700" width="700" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92.jpg 700w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92-300x300.jpg 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92-150x150.jpg 150w" data-lazy-sizes="(max-width: 700px) 100vw, 700px" class="attachment-large size-large wp-image-16 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92.jpg" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92.jpg" height="700" width="700" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92.jpg 700w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92-300x300.jpg 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Imagem-do-WhatsApp-de-2024-09-23-as-23.42.32_c6f09d92-150x150.jpg 150w" sizes="(max-width: 700px) 100vw, 700px" class="attachment-large size-large wp-image-16 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-1604992 elementor-widget elementor-widget-heading" data-id="1604992" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Libera uma substância chamada <b>ocitocina... </b>
+<br><br>Ela é responsável por gerar: desejo, paixão, tesão e até amor nas mulheres!
+<br><br>E conforme os homens vão tentando conquistar a mulher, a liberação de ocitocina diminui...
+<br><br>Pois é sempre a mesma conversa fiada, sempre o mesmo papo, os mesmos elogios...
+<br><br>E durante a conversa o cérebro vai diminuindo a liberação de ocitocina...
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-8fa192b elementor-widget elementor-widget-image" data-id="8fa192b" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img decoding="async" width="800" height="534" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20534'%3E%3C/svg%3E" class="attachment-large size-large wp-image-17" alt="" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/mulher-ignorando-namorado-durante-discussao-o-falando-235014960.webp 800w, https://eduardoducati.com.br/wp-content/uploads/2024/09/mulher-ignorando-namorado-durante-discussao-o-falando-235014960-300x200.webp 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/mulher-ignorando-namorado-durante-discussao-o-falando-235014960-768x513.webp 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/mulher-ignorando-namorado-durante-discussao-o-falando-235014960.webp" /><noscript><img loading="lazy" decoding="async" width="800" height="534" src="https://eduardoducati.com.br/wp-content/uploads/2024/09/mulher-ignorando-namorado-durante-discussao-o-falando-235014960.webp" class="attachment-large size-large wp-image-17" alt="" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/mulher-ignorando-namorado-durante-discussao-o-falando-235014960.webp 800w, https://eduardoducati.com.br/wp-content/uploads/2024/09/mulher-ignorando-namorado-durante-discussao-o-falando-235014960-300x200.webp 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/mulher-ignorando-namorado-durante-discussao-o-falando-235014960-768x513.webp 768w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>													</div>
+				</div>
+				<div class="elementor-element elementor-element-ecf0d17 elementor-widget elementor-widget-heading" data-id="ecf0d17" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">E elas tentam fazer de tudo para fugir daquele homem para ter a liberação de ocitocina de novo, e acabam te ignorando...</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-348fdf8 elementor-widget elementor-widget-heading" data-id="348fdf8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Mas então como eu faço para conquistar a mulher que eu quiser?</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-51ff5cd elementor-widget elementor-widget-heading" data-id="51ff5cd" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><p class="MsoNormal">Você pode conseguir isso aplicando o segredinho sujo, para
+manter a liberação de ocitocina dela sempre no máximo...<o:p></o:p></p>
+
+<p class="MsoNormal">Esse segredinho sujo se baseia em <b>"12 gatilhos da
+sedução"</b> que funciona em qualquer mulher...<o:p></o:p></p>
+
+<p class="MsoNormal">Quando você ativa esses gatilhos em uma mulher, você ativa a
+liberação máxima de ocitocina<o:p></o:p></p>
+
+<p class="MsoNormal">E uma vez que isso acontece, ela se tornará <b>obcecada</b> por
+você, como se fosse um vício para ela.<o:p></o:p></p>
+
+<p class="MsoNormal">E isso motivará ela a te desejar <b>o dia todo</b>, o que fará com
+que ela fique com vontade de te beijar e até ir pra sua cama.<o:p></o:p></p>
+
+<p class="MsoNormal">E no meu estudo eu cataloguei esses 12 gatilhos mais
+importantes e coloquei um passo a passo dentro de um guia sem enrolação que
+você pode ter acesso <b>HOJE!</b><o:p></o:p></p></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-a0dbc5f elementor-widget elementor-widget-heading" data-id="a0dbc5f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><p class="MsoNormal">Garanta o guia inabalável da sedução!<o:p></o:p></p></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-2ef5e0b elementor-widget elementor-widget-image" data-id="2ef5e0b" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.webp 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20288'%3E%3C/svg%3E" height="288" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-39 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png" height="288" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-39 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-415eb28 elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="415eb28" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="https://pay.kirvano.com/450e603b-fc38-45da-9abc-d9f00dcf3914">
+						<span class="elementor-button-content-wrapper">
+									<span class="elementor-button-text">QUERO O GUIA COM DESCONTO!</span>
+					</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-8fc9c9a elementor-widget elementor-widget-heading" data-id="8fc9c9a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Você está preparado?</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-85c2372 elementor-widget elementor-widget-heading" data-id="85c2372" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Essa é uma oportunidade única!
+<br><br>E você nunca mais vai ter acesso a tudo isso de novo por esse mesmo valor promocional!
+<br><br><b>Agora está nas suas mãos e você decide o seu futuro!
+</b>Eu já fiz de tudo para tentar te ajudar, e mostro que existe uma forma de conquistar a mulher que você quiser. 
+<br><br>Cabe a <b>você decidir se você merece ou não essa oportunidade</b>, se você não pode se comprometer com você mesmo, passe essa vaga em frente...
+<br><br>E dê a outro homem a oportunidade de conquistar a mulher que ele sempre sonhou!
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-0e6b527 elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="0e6b527" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="https://pay.kirvano.com/450e603b-fc38-45da-9abc-d9f00dcf3914">
+						<span class="elementor-button-content-wrapper">
+									<span class="elementor-button-text">QUERO O GUIA COM DESCONTO!</span>
+					</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-205141c elementor-widget elementor-widget-image" data-id="205141c" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<picture><source data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.webp 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" sizes="(max-width: 800px) 100vw, 800px" type="image/webp"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20288'%3E%3C/svg%3E" height="288" width="800" data-lazy-srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-39 sp-no-webp" alt="" decoding="async"  data-lazy-src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png" ><noscript><img src="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png" height="288" width="800" srcset="https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3.png 1024w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-300x108.png 300w, https://eduardoducati.com.br/wp-content/uploads/2024/09/Soft-Minimalist-Download-Multiple-Devices-Mockup-3-768x277.png 768w" sizes="(max-width: 800px) 100vw, 800px" class="attachment-large size-large wp-image-39 sp-no-webp" alt="" loading="lazy" decoding="async"  ></noscript> </picture>													</div>
+				</div>
+				<div class="elementor-element elementor-element-84ecbb3 elementor-widget elementor-widget-heading" data-id="84ecbb3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Agora se você se ama o suficiente e está disposta a investir em você mesma, e no seu futuro, então seu lugar é com os homens que decidiram usar esses <b>"12 gatilhos da sedução"</b>.
+<br><br>Aproveite essa oportunidade única, esse valor nunca mais vai estar disponível!
+<br><br>Garanta o <b>"Guia inabalável da sedução..."
+</b></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7ad0622 elementor-widget elementor-widget-heading" data-id="7ad0622" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">6x de R$5,56
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-f05e9c7 elementor-widget elementor-widget-text-editor" data-id="f05e9c7" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>ou R$29,90 à vista</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-a7e8a0a elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="a7e8a0a" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="https://pay.kirvano.com/450e603b-fc38-45da-9abc-d9f00dcf3914">
+						<span class="elementor-button-content-wrapper">
+									<span class="elementor-button-text">QUERO O GUIA COM DESCONTO!</span>
+					</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-edd80bc elementor-widget elementor-widget-heading" data-id="edd80bc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Total de vagas: 4 inscrições disponíveis</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-695f64b elementor-widget elementor-widget-heading" data-id="695f64b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Obrigado por ler até aqui, Deus te abençoe.</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-40394b3 elementor-widget elementor-widget-heading" data-id="40394b3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><p class="MsoNormal">Esse site não tem envolvimento com o João Guilherme e com
+nenhuma celebridade. Muito menos fizeram parte do desenvolvimento deste site ou
+e-book. Eles não tem conexão com o site, plataforma ou marketing deste site. Os
+escritores deste e-book apenas mencionaram o João Guilherme e as celebridades,
+porque eles foram objetos de estudo para a construção da teoria do "guia
+inabalável da sedução". No entanto, eles não têm envolvimento com nada
+deste site ou e-book! Também nenhuma informação contida neste produto deve ser
+interpretada como uma afirmação da obtenção de resultados. Qualquer referência
+ao desemprenho passado ou potencial de uma estratégia abordada no conteúdo não
+é, e não deve ser interpretada como garantia de qualquer resultado específico,
+isso porque, o resultado pode variar de pessoa para pessoa, e do seu esforço em
+aplicar todos os conteúdos abordados.<o:p></o:p></p></h2>		</div>
+				</div>
+					</div>
+				</div>
+				</div>
+					<script type="rocketlazyloadscript" data-rocket-type='text/javascript'>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-includes/js/dist/hooks.min.js?ver=2810c76e705dd1a53b18" id="wp-hooks-js"></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
+<script type="rocketlazyloadscript" id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script type="rocketlazyloadscript" data-minify="1" defer='defer' src="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=1728331633" id="swv-js"></script>
+<script id="contact-form-7-js-extra">
+var wpcf7 = {"api":{"root":"https:\/\/eduardoducati.com.br\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+</script>
+<script type="rocketlazyloadscript" id="contact-form-7-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "contact-form-7", {"translation-revision-date":"2023-10-27 10:58:15+0000","generator":"GlotPress\/4.0.1","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n > 1;","lang":"pt_BR"},"Error:":["Erro:"]}},"comment":{"reference":"includes\/js\/index.js"}} );
+</script>
+<script type="rocketlazyloadscript" data-minify="1" defer='defer' src="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/js/index.js?ver=1728331633" id="contact-form-7-js"></script>
+<script id="wpcf7-redirect-script-js-extra">
+var wpcf7r = {"ajax_url":"https:\/\/eduardoducati.com.br\/wp-admin\/admin-ajax.php"};
+</script>
+<script type="rocketlazyloadscript" data-minify="1" defer='defer' src="https://eduardoducati.com.br/wp-content/cache/min/1/wp-content/plugins/wpcf7-redirect/build/js/wpcf7r-fe.js?ver=1728332398" id="wpcf7-redirect-script-js"></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=3.1.1" id="hello-theme-frontend-js"></script>
+<script id="happy-elementor-addons-js-extra">
+var HappyLocalize = {"ajax_url":"https:\/\/eduardoducati.com.br\/wp-admin\/admin-ajax.php","nonce":"a5083a68ac","pdf_js_lib":"https:\/\/eduardoducati.com.br\/wp-content\/plugins\/happy-elementor-addons\/assets\/vendor\/pdfjs\/lib"};
+</script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/happy-elementor-addons/assets/js/happy-addons.min.js?ver=3.12.3" id="happy-elementor-addons-js"></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/wp-rocket/assets/js/heartbeat.js?ver=3.12.4" id="heartbeat-js"></script>
+<script type="rocketlazyloadscript" id="tiktok-pixel-tracking-handle-header-js-after">
+!function (w, d, t) {
+		 w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{},ttq._partner=ttq._partner||"WordPress";var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+		 ttq.load('CTVFSAJC77UAU38JL4FG');
+		 }(window, document, 'ttq');
+</script>
+<script type="rocketlazyloadscript" id="tiktok-tracking-handle-header-js-after">
+ttq.instance('CTVFSAJC77UAU38JL4FG').track('Pageview', {'event_id': '67807397bd57e_tt4b_woocommerce_6720ec58ebefb'})
+ttq.instance('CTVFSAJC77UAU38JL4FG').identify({
+            email: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+            phone_number: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+            first_name: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+            last_name: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+            zip_code: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            })
+</script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/pro-elements/assets/js/webpack-pro.runtime.min.js?ver=3.24.4" id="elementor-pro-webpack-runtime-js"></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.24.3" id="elementor-webpack-runtime-js"></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.24.3" id="elementor-frontend-modules-js"></script>
+<script type="rocketlazyloadscript" id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/eduardoducati.com.br\/wp-admin\/admin-ajax.php","nonce":"d7a257a389","urls":{"assets":"https:\/\/eduardoducati.com.br\/wp-content\/plugins\/pro-elements\/assets\/","rest":"https:\/\/eduardoducati.com.br\/wp-json\/"},"settings":{"lazy_load_background_images":true},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"pt_BR","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/eduardoducati.com.br\/wp-content\/plugins\/pro-elements\/modules\/lottie\/assets\/animations\/default.json"}};
+</script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/pro-elements/assets/js/frontend.min.js?ver=3.24.4" id="elementor-pro-frontend-js"></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
+<script type="rocketlazyloadscript" id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselWrapperAriaLabel":"Carrossel | Rolagem horizontal: Setas para esquerda e direita","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.24.3","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"container_grid":true,"e_swiper_latest":true,"e_nested_atomic_repeaters":true,"e_optimized_control_loading":true,"e_onboarding":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"home_screen":true,"ai-layout":true,"nested-elements":true,"editor_v2":true,"e_element_cache":true,"link-in-bio":true,"floating-buttons":true,"display-conditions":true,"form-submissions":true},"urls":{"assets":"https:\/\/eduardoducati.com.br\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/eduardoducati.com.br\/wp-admin\/admin-ajax.php"},"nonces":{"floatingButtonsClickTracking":"2591f1069e"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_footer_logo_type":"logo"},"post":{"id":9,"title":"Selecionados%21%20%E2%80%93%20eduardoducati.com.br","excerpt":"","featuredImage":false}};
+</script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.24.3" id="elementor-frontend-js"></script>
+<script type="rocketlazyloadscript" defer='defer' src="https://eduardoducati.com.br/wp-content/plugins/pro-elements/assets/js/elements-handlers.min.js?ver=3.24.4" id="pro-elements-handlers-js"></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://eduardoducati.com.br/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script>	<script type="text/javascript" id="perfmatters-delayed-styles-js">!function(){const e=["keydown","mousemove","wheel","touchmove","touchstart","touchend"];function t(){document.querySelectorAll("link[data-pmdelayedstyle]").forEach(function(e){e.setAttribute("href",e.getAttribute("data-pmdelayedstyle"))}),e.forEach(function(e){window.removeEventListener(e,t,{passive:!0})})}e.forEach(function(e){window.addEventListener(e,t,{passive:!0})})}();</script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1736471448 -->
